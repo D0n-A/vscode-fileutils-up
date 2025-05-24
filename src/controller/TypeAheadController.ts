@@ -2,6 +2,7 @@ import * as path from "path";
 import { QuickPickItem, window } from "vscode";
 import { Cache } from "../lib/Cache";
 import { TreeWalker } from "../lib/TreeWalker";
+import { localize } from "../extension";
 
 async function waitForIOEvents(): Promise<void> {
     return new Promise((resolve) => setImmediate(resolve));
@@ -49,12 +50,15 @@ export class TypeAheadController {
     }
 
     private buildQuickPickItemsHeader(lastEntry: string | undefined): QuickPickItem[] {
+        const description = this.relativeToRoot
+            ? localize("typeAhead.description.workspaceRoot", "workspace root")
+            : localize("typeAhead.description.currentFile", "current file");
         const items = [
-            this.buildQuickPickItem(ROOT_PATH, `- ${this.relativeToRoot ? "workspace root" : "current file"}`),
+            this.buildQuickPickItem(ROOT_PATH, `- ${description}`),
         ];
 
         if (lastEntry && lastEntry !== ROOT_PATH) {
-            items.push(this.buildQuickPickItem(lastEntry, "- last selection"));
+            items.push(this.buildQuickPickItem(lastEntry, localize("typeAhead.description.lastSelection", "- last selection")));
         }
 
         return items;
@@ -65,8 +69,8 @@ export class TypeAheadController {
     }
 
     private async showQuickPick(items: readonly QuickPickItem[]) {
-        const hint = "larger projects may take a moment to load";
-        const placeHolder = `First, select an existing path to create relative to (${hint})`;
+        const hint = localize("typeAhead.placeholder.hint", "larger projects may take a moment to load");
+        const placeHolder = localize("typeAhead.placeholder.selectPath", "First, select an existing path to create relative to ({0})", hint);
         return window.showQuickPick(items, { placeHolder, ignoreFocusOut: true });
     }
 }

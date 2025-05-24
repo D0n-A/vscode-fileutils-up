@@ -11,6 +11,7 @@ import {
     WorkspaceFolder,
 } from "vscode";
 import { FileItem } from "../FileItem";
+import { localize } from "../extension";
 import { Cache } from "../lib/Cache";
 import { getConfiguration } from "../lib/config";
 import { DialogOptions, ExecuteOptions, FileController, SourcePathOptions } from "./FileController";
@@ -46,12 +47,12 @@ export abstract class BaseFileController implements FileController {
 
         const textDocument = await workspace.openTextDocument(fileItem.path);
         if (!textDocument) {
-            throw new Error("Could not open file!");
+            throw new Error(localize("error.couldNotOpenFile", "Could not open file!"));
         }
 
         const editor = await window.showTextDocument(textDocument);
         if (!editor) {
-            throw new Error("Could not show document!");
+            throw new Error(localize("error.couldNotShowDocument", "Could not show document!"));
         }
 
         return editor;
@@ -159,11 +160,11 @@ export abstract class BaseFileController implements FileController {
         }
 
         if (fileItem.targetPath === undefined) {
-            throw new Error("Missing target path");
+            throw new Error(localize("error.missingTargetPath", "Missing target path"));
         }
 
-        const message = `File '${fileItem.targetPath.path}' already exists.`;
-        const action = "Overwrite";
+        const message = localize("confirmation.fileAlreadyExists.message", "File '{0}' already exists.", fileItem.targetPath.path);
+        const action = localize("confirmation.fileAlreadyExists.action.overwrite", "Overwrite");
         const overwrite = await window.showInformationMessage(message, { modal: true }, action);
         if (overwrite) {
             return fileItem;

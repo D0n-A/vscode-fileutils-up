@@ -1,7 +1,7 @@
 {
     "name": "vscode-fileutils",
-    "displayName": "File Utils",
-    "description": "A convenient way of creating, duplicating, moving, renaming and deleting files and directories.",
+    "displayName": "%displayName%",
+    "description": "%description%",
     "version": "3.10.3",
     "private": true,
     "license": "MIT",
@@ -33,6 +33,7 @@
     },
     "homepage": "https://github.com/sleistner/vscode-fileutils/blob/master/README.md",
     "main": "./out/extension.js",
+    "l10n": "./src/l10n",
     "activationEvents": [
         "onCommand:fileutils.renameFile",
         "onCommand:fileutils.moveFile",
@@ -49,47 +50,47 @@
             {
                 "command": "fileutils.renameFile",
                 "category": "File Utils",
-                "title": "Rename..."
+                "title": "%commands.renameFile.title%"
             },
             {
                 "command": "fileutils.moveFile",
                 "category": "File Utils",
-                "title": "Move..."
+                "title": "%commands.moveFile.title%"
             },
             {
                 "command": "fileutils.duplicateFile",
                 "category": "File Utils",
-                "title": "Duplicate..."
+                "title": "%commands.duplicateFile.title%"
             },
             {
                 "command": "fileutils.removeFile",
                 "category": "File Utils",
-                "title": "Delete"
+                "title": "%commands.removeFile.title%"
             },
             {
                 "command": "fileutils.newFile",
                 "category": "File Utils",
-                "title": "New File Relative to Current View..."
+                "title": "%commands.newFile.title%"
             },
             {
                 "command": "fileutils.newFileAtRoot",
                 "category": "File Utils",
-                "title": "New File Relative to Project Root..."
+                "title": "%commands.newFileAtRoot.title%"
             },
             {
                 "command": "fileutils.newFolder",
                 "category": "File Utils",
-                "title": "New Folder Relative to Current View..."
+                "title": "%commands.newFolder.title%"
             },
             {
                 "command": "fileutils.newFolderAtRoot",
                 "category": "File Utils",
-                "title": "New Folder Relative to Project Root..."
+                "title": "%commands.newFolderAtRoot.title%"
             },
             {
                 "command": "fileutils.copyFileName",
                 "category": "File Utils",
-                "title": "Copy Name"
+                "title": "%commands.copyFileName.title%"
             }
         ],
         "menus": {
@@ -177,34 +178,34 @@
         },
         "configuration": {
             "type": "object",
-            "title": "File Utils",
+            "title": "%config.fileutils.title%",
             "properties": {
                 "fileutils.typeahead.enabled": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Controls whether to show a directory selector for new file and new folder command.",
-                    "markdownDeprecationMessage": "**Deprecated**: Please use `#fileutils.newFile.typeahead.enabled#` or `#fileutils.newFolder.typeahead.enabled#` instead.",
-                    "deprecationMessage": "Deprecated: Please use fileutils.newFile.typeahead.enabled or fileutils.newFolder.typeahead.enabled instead."
+                    "description": "%config.fileutils.typeahead.enabled.description%",
+                    "markdownDeprecationMessage": "%config.fileutils.typeahead.enabled.markdownDeprecationMessage%",
+                    "deprecationMessage": "%config.fileutils.typeahead.enabled.deprecationMessage%"
                 },
                 "fileutils.duplicateFile.typeahead.enabled": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Controls whether to show a directory selector for the duplicate file command."
+                    "description": "%config.fileutils.duplicateFile.typeahead.enabled.description%"
                 },
                 "fileutils.moveFile.typeahead.enabled": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Controls whether to show a directory selector for the move file command."
+                    "description": "%config.fileutils.moveFile.typeahead.enabled.description%"
                 },
                 "fileutils.newFile.typeahead.enabled": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Controls whether to show a directory selector for the new file command."
+                    "description": "%config.fileutils.newFile.typeahead.enabled.description%"
                 },
                 "fileutils.newFolder.typeahead.enabled": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Controls whether to show a directory selector for new folder command."
+                    "description": "%config.fileutils.newFolder.typeahead.enabled.description%"
                 },
                 "fileutils.inputBox.pathType": {
                     "type": "string",
@@ -214,17 +215,17 @@
                         "workspace"
                     ],
                     "enumDescriptions": [
-                        "Absolute file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace)",
-                        "Relative file path of the opened workspace or folder (e.g. /myWorkspace)"
+                        "%config.fileutils.inputBox.pathType.enumDescriptions.0%",
+                        "%config.fileutils.inputBox.pathType.enumDescriptions.1%"
                     ],
-                    "description": "Controls the path that is shown in the input box."
+                    "description": "%config.fileutils.inputBox.pathType.description%"
                 },
                 "fileutils.inputBox.pathTypeIndicator": {
                     "type": "string",
                     "default": "@",
                     "maxLength": 50,
-                    "description": "Controls the indicator that is shown in the input box when the path type is workspace. This setting only has an effect when 'fileutils.inputBox.pathType' is set to 'workspace'.",
-                    "markdownDescription": "Controls the indicator that is shown in the input box when the path type is workspace. \n\nThis setting only has an effect when `#fileutils.inputBox.pathType#` is set to `workspace`.\n\nFor example, if the path type is `workspace` and the indicator is `@`, the path will be shown as `@/myWorkspace`."
+                    "description": "%config.fileutils.inputBox.pathTypeIndicator.description%",
+                    "markdownDescription": "%config.fileutils.inputBox.pathTypeIndicator.markdownDescription%"
                 },
                 "fileutils.menus.context.explorer": {
                     "type": "array",
@@ -245,15 +246,15 @@
                             "copyFileName"
                         ],
                         "enumDescriptions": [
-                            "Move",
-                            "Duplicate",
-                            "New File Relative to Project Root",
-                            "New Folder Relative to Project Root",
-                            "Copy Name"
+                            "%config.fileutils.menus.context.explorer.items.enumDescriptions.0%",
+                            "%config.fileutils.menus.context.explorer.items.enumDescriptions.1%",
+                            "%config.fileutils.menus.context.explorer.items.enumDescriptions.2%",
+                            "%config.fileutils.menus.context.explorer.items.enumDescriptions.3%",
+                            "%config.fileutils.menus.context.explorer.items.enumDescriptions.4%"
                         ]
                     },
                     "uniqueItems": true,
-                    "description": "Controls whether to show the command in the explorer context menu.",
+                    "description": "%config.fileutils.menus.context.explorer.description%",
                     "order": 90
                 },
                 "fileutils.menus.context.editor": {
@@ -275,15 +276,15 @@
                             "copyFileName"
                         ],
                         "enumDescriptions": [
-                            "Rename",
-                            "Move",
-                            "Duplicate",
-                            "Remove",
-                            "Copy Name"
+                            "%config.fileutils.menus.context.editor.items.enumDescriptions.0%",
+                            "%config.fileutils.menus.context.editor.items.enumDescriptions.1%",
+                            "%config.fileutils.menus.context.editor.items.enumDescriptions.2%",
+                            "%config.fileutils.menus.context.editor.items.enumDescriptions.3%",
+                            "%config.fileutils.menus.context.editor.items.enumDescriptions.4%"
                         ]
                     },
                     "uniqueItems": true,
-                    "description": "Controls whether to show the command in the editor context menu.",
+                    "description": "%config.fileutils.menus.context.editor.description%",
                     "order": 100
                 },
                 "fileutils.menus.context.editorTitle": {
@@ -305,15 +306,15 @@
                             "copyFileName"
                         ],
                         "enumDescriptions": [
-                            "Rename",
-                            "Move",
-                            "Duplicate",
-                            "Remove",
-                            "Copy Name"
+                            "%config.fileutils.menus.context.editorTitle.items.enumDescriptions.0%",
+                            "%config.fileutils.menus.context.editorTitle.items.enumDescriptions.1%",
+                            "%config.fileutils.menus.context.editorTitle.items.enumDescriptions.2%",
+                            "%config.fileutils.menus.context.editorTitle.items.enumDescriptions.3%",
+                            "%config.fileutils.menus.context.editorTitle.items.enumDescriptions.4%"
                         ]
                     },
                     "uniqueItems": true,
-                    "description": "Controls whether to show the command in the editor title context menu.",
+                    "description": "%config.fileutils.menus.context.editorTitle.description%",
                     "order": 110
                 }
             }
@@ -363,6 +364,8 @@
     },
     "dependencies": {
         "brace-expansion": "2.0.1",
-        "fast-glob": "3.3.1"
+        "fast-glob": "3.3.1",
+        "vscode-nls": "^5.0.0"
     }
+    // Removed the duplicated devDependencies block from here
 }

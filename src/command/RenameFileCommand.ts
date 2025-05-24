@@ -1,10 +1,11 @@
 import { Uri } from "vscode";
 import { RenameFileController } from "../controller/RenameFileController";
 import { BaseCommand } from "./BaseCommand";
+import { localize } from "../../extension";
 
 export class RenameFileCommand extends BaseCommand<RenameFileController> {
     public async execute(uri?: Uri): Promise<void> {
-        const dialogOptions = { prompt: "New Name", uri };
+        const dialogOptions = { prompt: localize("command.renameFile.prompt", "New Name"), uri };
         const fileItem = await this.controller.showDialog(dialogOptions);
         await this.executeController(fileItem);
     }

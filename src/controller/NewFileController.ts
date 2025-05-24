@@ -2,6 +2,7 @@ import expand from "brace-expansion";
 import * as path from "path";
 import { window } from "vscode";
 import { FileItem } from "../FileItem";
+import { localize } from "../extension";
 import { BaseFileController, TargetPathInputBoxValueOptions } from "./BaseFileController";
 import { DialogOptions, ExecuteOptions, SourcePathOptions } from "./FileController";
 
@@ -36,7 +37,7 @@ export class NewFileController extends BaseFileController {
         try {
             return fileItem.create(isDir);
         } catch {
-            throw new Error(`Error creating file '${fileItem.path}'.`);
+            throw new Error(localize("error.creatingFileFailed", "Error creating file '{0}'.", fileItem.path));
         }
     }
 

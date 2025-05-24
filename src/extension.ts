@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import * as nls from 'vscode-nls';
 import {
     Command,
     CopyFileNameCommand,
@@ -18,6 +19,8 @@ import {
 } from "./controller";
 import { RenameFileController } from "./controller/RenameFileController";
 
+export let localize: nls.LocalizeFunc;
+
 function handleError(err: Error) {
     if (err && err.message) {
         vscode.window.showErrorMessage(err.message);
@@ -33,6 +36,9 @@ function register(context: vscode.ExtensionContext, command: Command, commandNam
 }
 
 export function activate(context: vscode.ExtensionContext): void {
+    // Initialize NLS
+    localize = nls.loadMessageBundle();
+
     const copyFileNameController = new CopyFileNameController(context);
     const duplicateFileController = new DuplicateFileController(context);
     const moveFileController = new MoveFileController(context);

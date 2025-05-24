@@ -1,10 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
 import { Uri, workspace, WorkspaceEdit } from "vscode";
+import { localize } from "../extension";
 
 function assertTargetPath(targetPath: Uri | undefined): asserts targetPath is Uri {
     if (targetPath === undefined) {
-        throw new Error("Missing target path");
+        throw new Error(localize("error.missingTargetPath", "Missing target path"));
     }
 }
 
@@ -50,7 +51,7 @@ export class FileItem {
         const result = await workspace.applyEdit(edit);
 
         if (!result) {
-            throw new Error(`Failed to move file "${this.targetPath.fsPath}."`);
+            throw new Error(localize("error.moveFileFailed", "Failed to move file \"{0}\".", this.targetPath.fsPath));
         }
 
         this.SourcePath = this.targetPath;
@@ -64,7 +65,7 @@ export class FileItem {
             await workspace.fs.copy(this.path, this.targetPath, { overwrite: true });
             return new FileItem(this.targetPath, undefined, this.isDir);
         } catch (error) {
-            throw new Error(`Failed to duplicate file "${this.targetPath.fsPath}. (${error})"`);
+            throw new Error(localize("error.duplicateFileFailed", "Failed to duplicate file \"{0}\". ({1})", this.targetPath.fsPath, String(error)));
         }
     }
 
@@ -74,7 +75,7 @@ export class FileItem {
         const result = await workspace.applyEdit(edit);
 
         if (!result) {
-            throw new Error(`Failed to delete file "${this.path.fsPath}."`);
+            throw new Error(localize("error.deleteFileFailed", "Failed to delete file \"{0}\".", this.path.fsPath));
         }
 
         return this;

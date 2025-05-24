@@ -1,6 +1,7 @@
 import * as path from "path";
 import { window, workspace } from "vscode";
 import { FileItem } from "../FileItem";
+import { localize } from "../extension";
 import { BaseFileController } from "./BaseFileController";
 import { DialogOptions, ExecuteOptions } from "./FileController";
 
@@ -17,8 +18,8 @@ export class RemoveFileController extends BaseFileController {
             return new FileItem(sourcePath);
         }
 
-        const message = `Are you sure you want to delete '${path.basename(sourcePath)}'?`;
-        const action = "Move to Trash";
+        const message = localize("confirmation.deleteFile.message", "Are you sure you want to delete '{0}'?", path.basename(sourcePath));
+        const action = localize("confirmation.deleteFile.action.moveToTrash", "Move to Trash");
         const remove = await window.showInformationMessage(message, { modal: true }, action);
         if (remove) {
             return new FileItem(sourcePath);
@@ -30,7 +31,7 @@ export class RemoveFileController extends BaseFileController {
         try {
             await fileItem.remove();
         } catch (e) {
-            throw new Error(`Error deleting file '${fileItem.path}'.`);
+            throw new Error(localize("error.deletingFileFailed", "Error deleting file '{0}'.", fileItem.path));
         }
         return fileItem;
     }
