@@ -2,7 +2,7 @@ import { Uri } from "vscode";
 import { MoveFileController } from "../controller/MoveFileController";
 import { getConfiguration } from "../lib/config";
 import { BaseCommand } from "./BaseCommand";
-import { localize } from "../../extension";
+import { localize } from "../extension";
 
 export class DuplicateFileCommand extends BaseCommand<MoveFileController> {
     public async execute(uri?: Uri): Promise<void> {

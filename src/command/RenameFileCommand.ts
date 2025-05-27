@@ -1,7 +1,7 @@
 import { Uri } from "vscode";
 import { RenameFileController } from "../controller/RenameFileController";
 import { BaseCommand } from "./BaseCommand";
-import { localize } from "../../extension";
+import { localize } from "../extension";
 
 export class RenameFileCommand extends BaseCommand<RenameFileController> {
     public async execute(uri?: Uri): Promise<void> {

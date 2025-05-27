@@ -37,7 +37,7 @@ export class NewFileController extends BaseFileController {
         try {
             return fileItem.create(isDir);
         } catch {
-            throw new Error(localize("error.creatingFileFailed", "Error creating file '{0}'.", fileItem.path));
+            throw new Error(localize("error.creatingFileFailed", "Error creating file '{0}'.", fileItem.path.fsPath));
         }
     }
 

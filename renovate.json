@@ -5,8 +5,8 @@
     "ignoreDeps": ["@types/node", "@types/vscode"],
     "packageRules": [
         {
-          "updateTypes": ["minor", "patch", "pin", "digest"],
-          "automerge": true
+            "updateTypes": ["minor", "patch", "pin", "digest"],
+            "automerge": true
         }
     ]
 }

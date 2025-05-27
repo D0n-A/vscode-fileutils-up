@@ -1,12 +1,16 @@
 import { getConfiguration } from "../lib/config";
 import { NewFileCommand } from "./NewFileCommand";
-import { localize } from "../../extension";
+import { localize } from "../extension";
 
 export class NewFolderCommand extends NewFileCommand {
     public async execute(): Promise<void> {
         const typeahead = this.typeahead;
         const relativeToRoot = this.options?.relativeToRoot ?? false;
-        const dialogOptions = { prompt: localize("command.newFolder.prompt", "Folder Name"), relativeToRoot, typeahead };
+        const dialogOptions = {
+            prompt: localize("command.newFolder.prompt", "Folder Name"),
+            relativeToRoot,
+            typeahead,
+        };
         const fileItems = await this.controller.showDialog(dialogOptions);
 
         if (fileItems) {

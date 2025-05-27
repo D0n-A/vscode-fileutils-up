@@ -1,7 +1,7 @@
 import { NewFileController } from "../controller/NewFileController";
 import { getConfiguration } from "../lib/config";
 import { BaseCommand } from "./BaseCommand";
-import { localize } from "../../extension";
+import { localize } from "../extension";
 
 export class NewFileCommand extends BaseCommand<NewFileController> {
     public async execute(): Promise<void> {

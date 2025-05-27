@@ -16,22 +16,22 @@ _Inspired by [Sidebar Enhancements](https://github.com/titoBouzout/SideBarEnhanc
 
 ![demo](images/demo.gif)
 
-## Using the context menu:
+## Using the context menu
 
--   Right click on a file or folder in the Explorer pane or in a file tab.
--   Select one of those command: `Copy Name`, `Duplicate...`, `Move...`, `Rename...`, `Delete...`.
--   For comand `Copy name`, the file name is copied to the clipboard.
--   For other command, answer the additional info requested:
-    -   Duplicate: update path to duplicate near where the command palette is displayed.
-    -   Move: update path to move to near where the command palette is displayed.
-    -   Rename: update name in Explorer pane or near where the command palette is displayed
-    -   Delete: answer Visual Studio Code delete dialog.
+- Right click on a file or folder in the Explorer pane or in a file tab.
+- Select one of those command: `Copy Name`, `Duplicate...`, `Move...`, `Rename...`, `Delete...`.
+- For comand `Copy name`, the file name is copied to the clipboard.
+- For other command, answer the additional info requested:
+    - Duplicate: update path to duplicate near where the command palette is displayed.
+    - Move: update path to move to near where the command palette is displayed.
+    - Rename: update name in Explorer pane or near where the command palette is displayed
+    - Delete: answer Visual Studio Code delete dialog.
 
-### Using the command palette:
+### Using the command palette
 
--   Bring up the command palette, and select "File Utils: ".
--   Select one of the commands mentioned below.
--   Press [Enter] to confirm, or [Escape] to cancel.
+- Bring up the command palette, and select "File Utils: ".
+- Select one of the commands mentioned below.
+- Press [Enter] to confirm, or [Escape] to cancel.
 
 ![howto](images/howto.png)
 
@@ -70,11 +70,11 @@ Non-existent folders are created automatically.
 
 # Changelog
 
--   [https://github.com/sleistner/vscode-fileutils/blob/master/CHANGELOG.md](https://github.com/sleistner/vscode-fileutils/blob/master/CHANGELOG.md)
+- [https://github.com/sleistner/vscode-fileutils/blob/master/CHANGELOG.md](https://github.com/sleistner/vscode-fileutils/blob/master/CHANGELOG.md)
 
 # How to contribute
 
--   [https://github.com/sleistner/vscode-fileutils/blob/master/CONTRIBUTING.md](https://github.com/sleistner/vscode-fileutils/blob/master/CONTRIBUTING.md)
+- [https://github.com/sleistner/vscode-fileutils/blob/master/CONTRIBUTING.md](https://github.com/sleistner/vscode-fileutils/blob/master/CONTRIBUTING.md)
 
 # Disclaimer
 
@@ -85,8 +85,8 @@ or take any responsibility in case of lost data.
 
 # Contributors
 
--   [Steffen Leistner](https://github.com/sleistner)
--   [Ilia Shkolyar](https://github.com/iliashkolyar)
+- [Steffen Leistner](https://github.com/sleistner)
+- [Ilia Shkolyar](https://github.com/iliashkolyar)
 
 # License
 
@@ -96,4 +96,4 @@ MIT
 
 ## Icon
 
--   [Janosch, Green Tropical Waters - Utilities Icon](https://iconarchive.com/show/tropical-waters-folders-icons-by-janosch500/Utilities-icon.html)
+- [Janosch, Green Tropical Waters - Utilities Icon](https://iconarchive.com/show/tropical-waters-folders-icons-by-janosch500/Utilities-icon.html)

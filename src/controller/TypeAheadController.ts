@@ -53,12 +53,12 @@ export class TypeAheadController {
         const description = this.relativeToRoot
             ? localize("typeAhead.description.workspaceRoot", "workspace root")
             : localize("typeAhead.description.currentFile", "current file");
-        const items = [
-            this.buildQuickPickItem(ROOT_PATH, `- ${description}`),
-        ];
+        const items = [this.buildQuickPickItem(ROOT_PATH, `- ${description}`)];
 
         if (lastEntry && lastEntry !== ROOT_PATH) {
-            items.push(this.buildQuickPickItem(lastEntry, localize("typeAhead.description.lastSelection", "- last selection")));
+            items.push(
+                this.buildQuickPickItem(lastEntry, localize("typeAhead.description.lastSelection", "- last selection"))
+            );
         }
 
         return items;
@@ -70,7 +70,11 @@ export class TypeAheadController {
 
     private async showQuickPick(items: readonly QuickPickItem[]) {
         const hint = localize("typeAhead.placeholder.hint", "larger projects may take a moment to load");
-        const placeHolder = localize("typeAhead.placeholder.selectPath", "First, select an existing path to create relative to ({0})", hint);
+        const placeHolder = localize(
+            "typeAhead.placeholder.selectPath",
+            "First, select an existing path to create relative to ({0})",
+            hint
+        );
         return window.showQuickPick(items, { placeHolder, ignoreFocusOut: true });
     }
 }

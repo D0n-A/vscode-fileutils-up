@@ -19,7 +19,14 @@ export class TreeWalker {
             return files.map((file) => path.join(path.sep, file)).sort();
         } catch (err) {
             const details = (err as Error).message;
-            throw new Error(localize("error.listSubdirectoriesFailed", "Unable to list subdirectories for directory \"{0}\". Details: ({1})", sourcePath, details));
+            throw new Error(
+                localize(
+                    "error.listSubdirectoriesFailed",
+                    'Unable to list subdirectories for directory "{0}". Details: ({1})',
+                    sourcePath,
+                    details
+                )
+            );
         }
     }
 

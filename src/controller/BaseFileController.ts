@@ -163,7 +163,11 @@ export abstract class BaseFileController implements FileController {
             throw new Error(localize("error.missingTargetPath", "Missing target path"));
         }
 
-        const message = localize("confirmation.fileAlreadyExists.message", "File '{0}' already exists.", fileItem.targetPath.path);
+        const message = localize(
+            "confirmation.fileAlreadyExists.message",
+            "File '{0}' already exists.",
+            fileItem.targetPath.path
+        );
         const action = localize("confirmation.fileAlreadyExists.action.overwrite", "Overwrite");
         const overwrite = await window.showInformationMessage(message, { modal: true }, action);
         if (overwrite) {

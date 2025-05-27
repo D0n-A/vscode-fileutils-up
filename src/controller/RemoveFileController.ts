@@ -18,7 +18,11 @@ export class RemoveFileController extends BaseFileController {
             return new FileItem(sourcePath);
         }
 
-        const message = localize("confirmation.deleteFile.message", "Are you sure you want to delete '{0}'?", path.basename(sourcePath));
+        const message = localize(
+            "confirmation.deleteFile.message",
+            "Are you sure you want to delete '{0}'?",
+            path.basename(sourcePath)
+        );
         const action = localize("confirmation.deleteFile.action.moveToTrash", "Move to Trash");
         const remove = await window.showInformationMessage(message, { modal: true }, action);
         if (remove) {
@@ -31,7 +35,7 @@ export class RemoveFileController extends BaseFileController {
         try {
             await fileItem.remove();
         } catch (e) {
-            throw new Error(localize("error.deletingFileFailed", "Error deleting file '{0}'.", fileItem.path));
+            throw new Error(localize("error.deletingFileFailed", "Error deleting file '{0}'.", fileItem.path.fsPath));
         }
         return fileItem;
     }
